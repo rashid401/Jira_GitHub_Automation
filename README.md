@@ -127,6 +127,24 @@ docker exec -it redis_service redis-cli flushall
 
 ---
 
-## 📝 License
+## 🤝 Contributing & Support
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+I am very open to feedback, and contributions from the community to improve the automation Bot! 
+
+If you encounter any bugs, performance issues, or have suggestions for new features:
+1. Check the [Existing Issues](https://github.com/rashid401/Jira_GitHub_Automation/issues) to see if it has already been reported.
+2. If not, please **[Open a New Issue](https://github.com/rashid401/Jira_GitHub_Automation/issues/new)**.
+3. Provide as much detail as possible, including:
+   - A clear description of the bug.
+   - Steps to reproduce the issue.
+   - Relevant log snippets from `docker logs jira-bot`.
+
+---
+### 📚 Want to Learn More?
+
+If you're interested in the technologies used in this project, these official resources are excellent for deep-diving into the core concepts:
+
+* **[Flask Documentation](https://flask.palletsprojects.com/)** – Learn more about the Python web framework used to handle the webhooks.
+* **[Jira Cloud REST API Reference](https://developer.atlassian.com/cloud/jira/platform/rest/v3/intro/)** – Explore the endpoints available for automating Jira tasks.
+* **[GitHub Webhook Security](https://docs.github.com/en/webhooks/using-webhooks/validating-webhook-deliveries)** – A guide on how to secure your integrations using HMAC signatures.
+* **[Redis Documentation](https://redis.io/documentation)** – Understand more about key-value stores and how TTL (Time-To-Live) works for caching.
