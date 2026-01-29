@@ -142,7 +142,7 @@ If you encounter any bugs, performance issues, or have suggestions for new featu
 ---
 ### 📚 Want to Learn More?
 
-If you're interested in the technologies used in this project, these official resources are excellent for deep-diving into the core concepts:
+If you're interested in the technologies used in this project and wants to deep-diving into the core concepts:
 
 * **[Flask Documentation](https://flask.palletsprojects.com/)** – Learn more about the Python web framework used to handle the webhooks.
 * **[Jira Cloud REST API Reference](https://developer.atlassian.com/cloud/jira/platform/rest/v3/intro/)** – Explore the endpoints available for automating Jira tasks.
