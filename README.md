@@ -1,4 +1,4 @@
-# 🤖 GitHub-Jira Automation Shield
+# 🤖 GitHub-Jira Automation Bot
 
 [![Python Version](https://img.shields.io/badge/python-3.14-blue.svg)](https://www.python.org/)
 [![Redis Version](https://img.shields.io/badge/redis-8.4-red.svg)](https://redis.io/)
@@ -56,7 +56,7 @@ Create a `.env` file in the root directory and populate it with your credentials
 
 ```bash
 # Set to True for local development, False for production
-FLASK_DEBUG=False
+FLASK_DEBUG=False #Default value is false
 PORT=8000
 
 # Log file location
@@ -130,5 +130,3 @@ docker exec -it redis_service redis-cli flushall
 ## 📝 License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
-
-```
