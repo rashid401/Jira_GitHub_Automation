@@ -1,0 +1,6 @@
+flask
+gunicorn
+redis
+jira
+requests
+python-dotenv

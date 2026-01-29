@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  jira-bot:
+    build: Jira-github_automation
+    container_name: jira_github_automation
+    restart: always
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      - REDIS_HOST = redis_service
+    volumes:
+      - ./logs:app/logs
+    depends_on:
+      - redis_service
+    command:
+      - gunicorn ---workers 4 --bind 0.0.0.0:8000 fully_automated_jira_github:app
+    # redis service to communicate with jira-bot service
+  redis_service:
+      image: redis:8.4.0-alpine
+      container_name: redis_cache
+      restart: always
