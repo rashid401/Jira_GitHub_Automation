@@ -46,7 +46,9 @@ The system operates as a microservice stack managed by Docker Compose:
 ├── logs/                               # Persistent Log Files
 ├── .env                                # Environment Secrets
 ├── Dockerfile                          # Bot Image Build Script
-└── docker-compose.yml                  # Service Orchestration
+├── docker-compose.yml                  # Service Orchestration
+├── dockerfile.ci                       # Pipeline Agent Custom image
+└── Jenkinsfile                         # Pipeline File
 
 ```
 
@@ -79,12 +81,7 @@ REDIS_PORT = 6379
 
 ### 3. Deployment
 
-Deploy the entire stack with a single command:
-
-```bash
-docker-compose up -d --build
-
-```
+Deploy on EC2 using Jenkins CI/CD Pipeline:
 
 ---
 
