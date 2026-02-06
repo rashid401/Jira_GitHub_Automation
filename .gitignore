@@ -1,2 +1,4 @@
 .env
 fully_automated_jira_github.py.BAK
+.idea/
+.DS_Store
