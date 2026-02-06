@@ -73,7 +73,7 @@ GITHUB_WEBHOOK_SECRET=your_secret_here
 GITHUB_TOKEN=ghp_your_token_here
 
 # --- Redis Configuration ---
-# REDIS_HOST = redis_service #<define your redis service name (redi-service)> # HOST is directly embedded in docker-compose file
+# REDIS_HOST = redis_service # HOST is directly embedded in docker-compose file
 REDIS_PORT = 6379
 ```
 

@@ -1,0 +1,13 @@
+FROM python:3.12-alpine23.23
+
+RUN apk add --no-cache \
+    docker-cli \
+    docker-compose \
+    git \
+    build-base \
+
+RUN pip install --no-cache-dir \
+    flake8 \
+    pytest \
+    pytest-cov \
+    sonar-scanner-cli
