@@ -41,14 +41,40 @@ The system operates as a microservice stack managed by Docker Compose:
 .
 ├── app/
 │   ├── fully_automated_jira_github.py  # Application Entry Point
-│   ├── config.py                       # Configuration Management
-│   └── requirements.txt                # Dependency Manifest
-├── logs/                               # Persistent Log Files
+│   └── config.py                       # Configuration Management
+├── terraform/
+│   ├── main.tf
+│   ├── variables.tf
+│   ├── outputs.tf
+│   ├── versions.tf
+│   ├── provider.tf
+│   ├── terraform.tfvars          # optional
+│   ├── backend.tf                # remote state
+│   └── modules/
+│         ├── vpc/
+│         │   ├── main.tf
+│         │   ├── variables.tf
+│         │   └── outputs.tf
+│         ├── ec2/
+│         │   ├── main.tf
+│         │   ├── variables.tf
+│         │   └── outputs.tf
+│         └── security-group/
+│             ├── main.tf
+│             ├── variables.tf
+│             └── outputs.tf
+├── env/
+│   ├── dev.tfvars
+│   ├── stage.tfvars
+│   └── prod.tfvars
+├── scripts                             
+│    └── deploy.sh                       EC2 Deployment script
 ├── .env                                # Environment Secrets
 ├── Dockerfile                          # Bot Image Build Script
 ├── docker-compose.yml                  # Service Orchestration
 ├── dockerfile.ci                       # Pipeline Agent Custom image
-└── Jenkinsfile                         # Pipeline File
+├── Jenkinsfile                         # Pipeline File
+└── requirements.txt                    # Dependency Manifest
 
 ```
 
