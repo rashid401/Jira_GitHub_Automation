@@ -68,7 +68,7 @@ The system operates as a microservice stack managed by Docker Compose:
 │   ├── stage.tfvars
 │   └── prod.tfvars
 ├── scripts                             
-│    └── deploy.sh                       EC2 Deployment script
+│    └── deploy.sh                      # EC2 Deployment script
 ├── .env                                # Environment Secrets
 ├── Dockerfile                          # Bot Image Build Script
 ├── docker-compose.yml                  # Service Orchestration
