@@ -13,7 +13,7 @@ class Config:
     JIRA_API_TOKEN = os.environ.get('JIRA_API_TOKEN')
     JIRA_PROJECT_KEY = os.environ.get('JIRA_PROJECT_KEY', 'GIH')
 
-    LOG_FILE = os.environ.get('LOG_FILE', 'app/logs/github_jira_automation.log')
+    LOG_FILE = os.environ.get('LOG_FILE', 'logs/github_jira_automation.log')
 
     # Flask Settings
     DEBUG = os.environ.get('FLASK_DEBUG', 'False') == 'True'

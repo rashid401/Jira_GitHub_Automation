@@ -9,7 +9,6 @@ pipeline {
         IMAGE_NAME = "jira-github-automation"
         IMAGE_TAG = "V${BUILD_NUMBER}"
         SONAR_ENV = "sonarqube-server"
-        DEPLOY_HOST = "ec2-user@xx.xx.xx.xx"
     }
     stages {
         stage ('Checkout') {
@@ -50,7 +49,7 @@ pipeline {
                 }
             }
         }
-        stage('Docker Build') {
+        stage('Docker Build & Push') {
             steps {
                 sh '''
                     docker build -t ${IMAGE_NAME}:${IMAGE_TAG} .
@@ -59,23 +58,42 @@ pipeline {
                 '''
             }
         }
+        stage('Terraform Apply & Get Host') {
+            steps {
+                dir('terraform') {
+                    script {
+                        sh '''
+                        terraform init
+                        terraform apply -auto-approve
+                        '''
+
+                        def ip = sh(
+                            script: "terraform outout -raw ec2_public_ip",
+                            returnStdout: true
+                        ).trim()
+
+                        env.DEPLOY_HOST = "ec2-user@{ip}"
+                    }
+                }
+            }
+        }
         stage('Deploy to EC2') {
-            when {branch 'MAIN'}
+            when {branch 'main'}
             steps {
                 sshagent(['ec2-ssh-key']){
                  sh '''
-                    ssh ${DEPLOY_HOST} << EOF
-                    set -e
-                    mkdir -p /opt/jira-github-automation
-                    cat > /opt/jira-github-automation/docker-compose.yml << 'COMPOSE_EOF'
-                    $(cat docker-compose.yml)
-                    COMPOSE_EOF
-                    export IMAGE_TAG=${IMAGE_TAG}
-                    cd /opt/jira-github-automation
-                    docker-compose pull
-                    docker-compose down || true
-                    docker-compose up -d
-                    EOF
+                    ssh -o StrictHostKeyChecking=no ${DEPLOY_HOST} '
+                      set -e
+                      mkdir -p /opt/jira-github-automation
+                    '
+                    scp docker-compose.yml ${DEPLOY_HOST}:/opt/jira-github-automation/docker-compose.yml
+                    scp docker-compose.yml ${DEPLOY_HOST}:/opt/jira-github-automation/deploy.sh
+
+                    ssh -o StrictHostKeyChecking=no ${DEPLOY_HOST} '
+                      chmod +x /opt/jira-github-automation/deploy.sh
+                      export IMAGE_TAG=${IMAGE_TAG}
+                      /opt/jira-github-automation/deploy.sh
+                    '
                 '''
                 }
             }

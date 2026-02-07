@@ -8,7 +8,7 @@ from flask import Flask, request, abort
 from jira import JIRA
 from logging.handlers import RotatingFileHandler
 from datetime import timedelta, datetime
-from config import Config
+from app.config import Config
 
 # Load and validate configuration
 Config.datavalidate()
